@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Feed.Flicker.View.PhotoFeedView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Util.Common.Converters;assembly=Util.Common"
+             xmlns:converters="clr-namespace:Util.Common.Converters;assembly=Util.Common"
+             xmlns:external="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="../View/FeedView.xaml"/>
+    </UserControl.Resources>
+    
+
+    <Grid Name="PhotoFeedGrid" Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" FontSize="16" Text="{Binding Path=Feed.SearchTag, Converter={x:Static local:ResultsTagToTextConverter.Instance}}"
+                       HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="1" Text="No Images Are Available!!"  HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="28" Margin="0,20"
+                        Visibility="{Binding Path=IsImageNotAvailable, Converter={x:Static converters:BoolToCollapsedVisibilityConverter.Instance}}"/>
+        </Grid>
+
+        <Border Grid.Row="1" MinHeight="500"/>
+        <ScrollViewer Grid.Row="1" Margin="0,10"
+                      VerticalScrollBarVisibility="Auto"
+                      Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}">
+
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding Path=FeedItemCollection}" 
+                              ItemTemplate="{StaticResource ResourceKey=FeedItemTemplate}" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.Template>
+                        <ControlTemplate TargetType="ItemsControl">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/> 
+
+                                </Grid.ColumnDefinitions>
+                                <StackPanel HorizontalAlignment="Stretch">
+                                    <ItemsPresenter />
+
+                                    <external:ImageAwesome Grid.Row="0" Icon="Refresh" Spin="True" Height="60" Width="60" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                     Visibility="{Binding Path=IsLoading, Converter={x:Static converters:BoolToCollapsedVisibilityConverter.Instance}}"/>
+                                    <TextBlock Grid.Row="1" 
+                                               Text="Loading" 
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               FontSize="28" Margin="0,20"
+                                               Visibility="{Binding Path=IsLoading, Converter={x:Static converters:BoolToCollapsedVisibilityConverter.Instance}}"/>
+                                   
+                                </StackPanel>
+                            
+                            </Grid>
+
+                        </ControlTemplate>
+                    </ItemsControl.Template>
+                </ItemsControl>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button  Margin="0,10" Grid.Column="0" Width="400" Height="30" BorderThickness="3" BorderBrush="Black"
+                     Content="Load More Images" 
+                     Command="{Binding Path=LoadMoreCommand}"
+                    Visibility="{Binding FeedItemCollection.Count, Converter={x:Static local:CountToVisibilityCollapseConverter.Instance}}"/>
+
+                    <Button Grid.Column="1" Width="400" Height="30" BorderThickness="3" BorderBrush="Black"
+                    HorizontalAlignment="Right"
+                    Command="{Binding Path=ClearFeedCommand}"
+                    Content="Clear Feed"
+                    Visibility="{Binding FeedItemCollection.Count, Converter={x:Static local:CountToVisibilityCollapseConverter.Instance}}"            />
+                
+                </Grid>
+            </StackPanel>
+
+        </ScrollViewer>
+    </Grid>
+</UserControl>
