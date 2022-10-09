@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootStrapper.FlickerConsole", "BootStrapper.FlickerConsole\BootStrapper.FlickerConsole.csproj", "{E05B7C15-4CCC-4877-8694-09E6900A18EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BootStrapper", "BootStrapper", "{8ED85487-1A43-4787-82F8-F50309377B3F}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIServices", "APIServices", "{7ED987CA-4875-40CA-9FE4-5FA774EA67F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIServices.Flicker", "APIServices.Flicker\APIServices.Flicker.csproj", "{395A5464-D430-47EF-8926-5E338001E074}"
@@ -21,8 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search.Flicker", "Search.Fl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feed.Flicker", "Feed.Flicker\Feed.Flicker.csproj", "{D9121939-35FB-4B3A-8F2F-AC1C3D3627CD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BootStrapper", "BootStrapper", "{8ED85487-1A43-4787-82F8-F50309377B3F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootStrapper.ApplicationUI", "BootStrapper.ApplicationUI\BootStrapper.ApplicationUI.csproj", "{A3865E72-B840-4674-AB8D-3CF77FBF73FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{8D258838-90A6-4AAA-9758-859C00ED51B6}"
@@ -32,8 +34,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Util", "Util", "{25C03788-39DD-471C-93C0-55C4D256B4E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util.Common", "Util.Common\Util.Common.csproj", "{F23B9C26-E40C-4258-92D7-B8FED1432747}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootStrapper.FlickerConsole", "BootStrapper.FlickerConsole\BootStrapper.FlickerConsole.csproj", "{E05B7C15-4CCC-4877-8694-09E6900A18EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIServices.Twitter", "APIServices.Twitter\APIServices.Twitter.csproj", "{5CC376BE-A2FF-4086-81DB-C4B3920228A3}"
 EndProject
